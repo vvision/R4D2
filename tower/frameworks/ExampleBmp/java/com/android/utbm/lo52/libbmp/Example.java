@@ -16,7 +16,7 @@ public class Example {
 	}
 
 	public static void main (){
-    bmpFunction("file", 800, 600, 42);
+    bmpFunction("file", 50, 50, 32);
   } 
 
 }
