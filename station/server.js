@@ -1,8 +1,11 @@
-var express = require('express');
-var app = express();
-var fs = require('fs');
-var values = [];
-
+var express = require('express')
+  , app = express()
+  , fs = require('fs')
+  , db = require('./model/db')
+  , mongoose = require('mongoose')
+  , Measurement = mongoose.model('Measurement')
+  , conf = require('./config')
+  , serial = require('./serial');
 
 app.use(express.logger());
 app.use(express.bodyParser({uploadDir:'./tmp'}));
@@ -13,39 +16,50 @@ app.use(function(req, res) {
     fs.createReadStream( './public/index.html').pipe(res);
 });
 
-app.listen(8080, 'localhost', function () {
-  console.log('Server running on port 8080');
+app.listen(conf.port, conf.host, function () {
+  console.log('Server running on ' + conf.host + ':' + conf.port);
 });
 
-app.post('/valeur', function(req, res, next) {
-  var arduino = req.body.arduino;
-  var pin = req.body.pin;
-  var val = req.body.val;
+app.get('/mock', function(req, res, next) {
+  var data = {
+    allValues: [
+      {
+        sensorId: 1,
+        timestamp: 42,
+        value: 21
+      },
+      {
+        sensorId: 1,
+        timestamp: 21,
+        value: 11
+      }
+    ]
+  };
   
-  if(values.length >= 10) {
-    values.shift();
-  }
-  
-  /*values.push({
-    //"arduino": arduino,
-    "pin": parseInt(pin),
-    "val": parseInt(val)
-  });*/
-  values.push([parseInt(pin), parseInt(val)]);
-  
-  console.log("Stored!");
-  res.send(200);
+  res.send(data);
 });
 
-app.get('/valeurs', function(req, res, next) {
-  res.send(values);
+app.get('/values', function(req, res, next) {
+  var id = req.query.sensor;
+  
+  if(id) {
+    Measurement.find({sensorId: id}, function(err, docs) {
+		  if(err) console.error(err);
+		  console.log(docs);
+		  if(docs) {
+		    res.send({allValues: docs, err: null});
+		  } else {
+		    res.send({allValues: null, err: 'No data for this sensor.'});
+		  }
+	  });
+	} else {
+	  res.send({allValues: null, err: 'Wrong sensor id.'});
+	}
+  
 });
 
-app.get('/val', function(req, res, next) {
-  console.log(values);
-  console.log(values[9]);
-  console.log(values[9][1]);
-  res.send([values[9]]);
-});
+
+
+
 
 

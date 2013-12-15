@@ -5,7 +5,7 @@ R4D2
 Requirements
 ============
 
-Node.Js is required to run the station.
+Node.Js and MongoDB are required to run the station.
 
 
 Installation
@@ -15,14 +15,22 @@ Installation
 
 ##Station
 * `npm install` to perform installation.
-* `node serial.js` to read data from the serial.
-* `node server.js` to launch the API.
+* `node server.js` to launch the API and read the serial.
+
+##Arduino
+
+
+##Tower
+
+
+##Application
+
 
 
 Configuration
 =============
 
-Configure serial port in serial.js (ex: /dev/ttyACM0).
+Configure serial port in station/config.json (ex: /dev/ttyACM0).
 
 License
 =======

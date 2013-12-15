@@ -4,7 +4,7 @@
   "author": "vvision <email>vvision@sfr.fr</email>",
   "description": "Retrieve information from Arduino over Serial. Access data via http.",
   "license": "MIT",                           
-  "engine": {                               
+  "engine": {
     "node": "&gt;=0.4"
   },
   "main": "./lib/example.js",                
@@ -15,7 +15,8 @@
     "express": "3.0",
     "async": "0.1.18",
     "serialport": "",
-    "request": ""
+    "request": "",
+    "mongoose": ""
   },
   "devDependencies": {                       
     "mocha": "1.2.0",                       

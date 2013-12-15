@@ -1,44 +1,49 @@
-var serialport = require("serialport");
-var request = require("request");
-var SerialPort = serialport.SerialPort;
-var serialPort = new SerialPort("/dev/ttyACM0", {
-  baudrate: 9600,
-  buffersize: 576,
-  parser: serialport.parsers.readline("\n")
-});
+//Handle Serial Communication
+var serialport = require("serialport")
+  ,SerialPort = serialport.SerialPort
+  , db = require('./model/db')
+  , mongoose = require('mongoose')
+  , Measurement = mongoose.model('Measurement')
+  , conf = require('./config')
+  , serialPort = new SerialPort(conf.serial, {
+      baudrate: 9600,
+      buffersize: 576,
+      parser: serialport.parsers.readline("\n")
+    });
 
+//Listen on Serials
 serialPort.on("open", function () {
-  console.log('open');
+  console.log('Now listening on Serial ' + conf.serial);
+  
+  //When receiving data
   serialPort.on('data', function(data) {
-    console.log('data received: ' + data);
+    console.log('Received: ' + data);
+
+    //Parse data
     data = data.split(',');
     var arduino = data[0].charAt(2);
     var pin = data[1];
     var value = data[2].split('\r');
-    var val = value[0];
+    var value = value[0];
     
-    console.log({
-        arduino: arduino,
-        pin: pin,
-        val: val
-      });
+    //Create a new document
+    var val = new Measurement({
+      sensorId: arduino,
+      timestamp: Date.now(),
+      value: value
+    });
     
-    var options = {
-      url: 'http://localhost:8080/valeur',
-      method: 'POST',
-      json: {
-        arduino: arduino,
-        pin: pin,
-        val: val
-      }
-    };
-    
-    request(options, function(err, response, body) {
-       if(err) console.error(err);
-       if(response.statusCode == 200){
-        console.log("OK");
-       }
-    }); 
+    //Insert it in Mongo
+    val.save(function (err, data) {
+      if (err) console.log(err);
+      console.log(data);
+      //Remove too old data
+      var old = val.timestamp - 60000 ;
+      Measurement.find().where('sensorId').equals(val.sensorId).where('timestamp').lt(old).remove().exec();
+    });
+
   });
 });
+
+
 
