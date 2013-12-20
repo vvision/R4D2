@@ -1,1 +1,1 @@
-add_lunch_combo full_R4D2_eng
+add_lunch_combo full_R4D2-eng
