@@ -2,14 +2,12 @@ R4D2
 ====
 
 
-Requirements
-============
+#Requirements
 
 Node.Js and MongoDB are required to run the station.
 
 
-Installation
-============
+#Installation
 
 * Clone it from Github: `https://github.com/vvision/R4D2.git`.
 
@@ -27,12 +25,10 @@ Installation
 
 
 
-Configuration
-=============
+#Configuration
 
 Configure serial port in station/config.json (ex: /dev/ttyACM0).
 
-License
-=======
+#License
 
 MIT, see License.
