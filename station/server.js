@@ -33,7 +33,8 @@ app.get('/mock', function(req, res, next) {
         timestamp: 21,
         value: 11
       }
-    ]
+    ],
+    err: null
   };
   
   res.send(data);
