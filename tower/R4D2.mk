@@ -1,6 +1,7 @@
 $(call inherit-product, device/linaro/pandaboard/pandaboard.mk
 
 PRODUCT_PROPERTY_OVERRIDES := ro.hw=lo52
+PRODUCT_PROPERTY_OVERRIDES += hw.nobattery=true
 DEVICE_PACKAGE_OVERLAY:=device/linaro/R4D2/overlay
 PRODUCT_PACKAGES += \
   libusb-shared \
