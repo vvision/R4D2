@@ -11,6 +11,7 @@ We use TinkerKit to manage the sensor easily.
 #Configurations
 
 Configuration must be applied with wireless proto shield in usb mode and the emptySketch running on it.
+On GNU/Linux, you can use picocom (ex: picocom -lc /dev/ttyACM0).
 
 * Coordinator 
 

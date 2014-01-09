@@ -1,0 +1,177 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+<RelativeLayout 
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/textview_ip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:text="@string/hello_world" />
+
+        <Button
+            android:id="@+id/button_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/button_refresh" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/rectangle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/rectangle" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <GridLayout
+            android:id="@+id/GridLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#000000"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="1dp"
+            android:rowCount="2"
+            tools:context=".GridXMLActivity" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_row="0"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/textview_sensor1Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorId1" />
+
+                <TextView
+                    android:id="@+id/textview_sensor1TimeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorTimeStamp" />
+
+                <TextView
+                    android:id="@+id/textview_sensor1Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorValue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_margin="1dp"
+                android:layout_row="1"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/textview_sensor2Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorId2" />
+
+                <TextView
+                    android:id="@+id/textview_sensor2TimeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorTimeStamp" />
+
+                <TextView
+                    android:id="@+id/textview_sensor2Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorValue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_row="0"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                 <TextView
+                    android:id="@+id/textview_sensor3Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorId3" />
+
+                <TextView
+                    android:id="@+id/textview_sensor3TimeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorTimeStamp" />
+
+                <TextView
+                    android:id="@+id/textview_sensor3Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorValue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_margin="1dp"
+                android:layout_row="1"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+                 <TextView
+                    android:id="@+id/textview_sensor4Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorId4" />
+
+                <TextView
+                    android:id="@+id/textview_sensor4TimeStamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorTimeStamp" />
+
+                <TextView
+                    android:id="@+id/textview_sensor4Value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sensorValue" />
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+
+</LinearLayout>

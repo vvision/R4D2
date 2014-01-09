@@ -10,7 +10,7 @@ PRODUCT_PACKAGES += \
   libbmp-static \
   libbmpExample \
   libbmpExample_jni \
-  Domo
+  R4D2
 
 PRODUCT_COPY_FILES += \
   system/media/bootanimation.zip:system/media/bootanimation.zip
