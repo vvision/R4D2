@@ -44,7 +44,8 @@ app.get('/values', function(req, res, next) {
   var id = req.query.sensor;
   
   if(id) {
-    Measurement.find({sensorId: id}, function(err, docs) {
+    //Find 3 most recent measurements (Requested by app programmer).
+    Measurement.find({sensorId: id}).sort({timestamp: 'desc'}).limit(3).exec(function(err, docs) {
 		  if(err) console.error(err);
 		  console.log(docs);
 		  if(docs) {
