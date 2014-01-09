@@ -9,7 +9,8 @@ PRODUCT_PACKAGES += \
   libbmp-shared \
   libbmp-static \
   libbmpExample \
-  libbmpExample_jni
+  libbmpExample_jni \
+  Domo
 
 PRODUCT_COPY_FILES += \
   system/media/bootanimation.zip:system/media/bootanimation.zip
