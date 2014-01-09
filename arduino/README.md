@@ -14,27 +14,70 @@ Configuration must be applied with wireless proto shield in usb mode and the emp
 
 * Coordinator 
 
-Parameter 	                   Value 	      Comments
-CH (Channel) 	                 0x0F 	      Identical
-ID (PAN ID) 	                 0x5241 	    Identical
-DH 	                           0x0 	
-DL 	                           0x0000FFFF   Broadcast Mode
-MY (Source Address) 	         0xFF01 	    Unique
-CE (Coordinator Enable) 	     1 	
-A2 (Coordinator Association) 	 0x04 	      Allow end devices to associate to it.
-RO (Packetization Timeout) 	   0x20 	      Large enough for the delay between any two chars
+<table>
+  <tr>
+    <th>Parameter</th><th>Value</th><th>Comments</th>
+  </tr>
+  <tr>
+    <td>CH (Channel)</td><td>0x0F</td><td>Identical</td>
+  </tr>
+  <tr>
+    <td>ID (PAN ID)</td><td>0x5241</td><td>Identical</td>
+  </tr>
+  <tr>
+    <td>DH</td><td>0x0</td><td></td>
+  </tr>
+  <tr>
+    <td>DL</td><td>0x0000FFFF</td><td>Broadcast Mode</td>
+  </tr>
+  <tr>
+    <td>MY (Source Address)</td><td>0xFF01</td><td>Unique</td>
+  </tr>
+  <tr>
+    <td>CE (Coordinator Enable)</td><td>1</td><td></td>
+  </tr>
+  <tr>
+    <td>A2 (Coordinator Association)</td><td>0x04</td><td>Allow end devices to associate to it.</td>
+  </tr>
+  <tr>
+    <td>RO (Packetization Timeout)</td><td>0x20</td><td>Large enough for the delay between any two chars.</td>
+  </tr>
+</table>
 
-* End device (All end devices use the same configuration) 
+* End device
 
-Parameter 	                   Value 	      Comments
-CH (Channel) 	                 0x0F 	      Identical
-ID (PAN ID) 	                 0x5241 	    Identical
-DH 	                           0x0 	
-DL 	                           0xFF01 	    The coordinator address
-MY (Source Address) 	         0xFFFE 	    Will change to be 0xFFFE after association
-CE (Coordinator Enable) 	     0 	
-A1 (End Device Association) 	 0x04 	      Allow associate to coordinator.
-RO (Packetization Timeout) 	   0x20 	      Large enough for the delay between any two chars
+(All end devices use the same configuration)
+
+
+<table>
+  <tr>
+    <th>Parameter</th><th>Value</th><th>Comments</th>
+  </tr>
+  <tr>
+    <td>CH (Channel)</td><td>0x0F</td><td>Identical</td>
+  </tr>
+  <tr>
+    <td>ID (PAN ID)</td><td>0x5241</td><td>Identical</td>
+  </tr>
+  <tr>
+    <td>DH</td><td>0x0</td><td></td>
+  </tr>
+  <tr>
+    <td>DL</td><td>0xFF01</td><td>The coordinator address</td>
+  </tr>
+  <tr>
+    <td>MY (Source Address)</td><td>0xFFFE</td><td>Will change to be 0xFFFE after association</td>
+  </tr>
+  <tr>
+    <td>CE (Coordinator Enable)</td><td>0</td><td></td>
+  </tr>
+  <tr>
+    <td>A1 (End Device Association)</td><td>0x04</td><td>Allow associate to coordinator.</td>
+  </tr>
+  <tr>
+    <td>RO (Packetization Timeout)</td><td>0x20</td><td>Large enough for the delay between any two chars.</td>
+  </tr>
+</table>
 
 Note: After the end device joints the PAN, the MY becomes 0xFFFE, the DL,DH becomes the address of coordinator. (DH = 0, DL = 0xFF01) 
 
