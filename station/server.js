@@ -49,13 +49,13 @@ app.get('/values', function(req, res, next) {
 		  if(err) console.error(err);
 		  console.log(docs);
 		  if(docs) {
-		    res.send({allValues: docs, err: null});
+		    res.send({allValues: docs/*, err: null*/});
 		  } else {
-		    res.send({allValues: null, err: 'No data for this sensor.'});
+		    res.send({allValues: null/*, err: 'No data for this sensor.'*/});
 		  }
 	  });
 	} else {
-	  res.send({allValues: null, err: 'Wrong sensor id.'});
+	  res.send({allValues: null/*, err: 'Wrong sensor id.'*/});
 	}
   
 });
