@@ -1,33 +1,25 @@
 R4D2
 ====
 
+Monitor sensors on arduinos with an android app on a PandaBoard running our custom Android system.
 
-#Requirements
+#Description
 
-Node.Js and MongoDB are required to run the station.
+Sensors are gathering data (temperature, light, ...) in different places of a building. Using a ZigBee wireless network, data are sent to a server which stores information in a database. Then, an android board with an app is used to display data by asking the server.
 
+This project uses the following technologies:
+* Arduino
+* ZigBee
+* Android
+* Node.Js
+* MongoDB
+* PandaBoard
+* TinkerKit
 
 #Installation
 
 * Clone it from Github: `https://github.com/vvision/R4D2.git`.
 
-##Station
-* `npm install` to perform installation.
-* `node server.js` to launch the API and read the serial.
-
-##Arduino
-
-
-##Tower
-
-
-##Application
-
-
-
-#Configuration
-
-Configure serial port in station/config.json (ex: /dev/ttyACM0).
 
 #License
 
