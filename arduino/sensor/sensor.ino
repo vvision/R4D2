@@ -1,34 +1,43 @@
-int sensorId = 1;//Modify the id here
-int sensorValue = 0;
-int lastValue = 0;
-long waitingTime = 2000;//Time to wait between each reading
-unsigned long lastSending = 0;//Time when last sending occured
-long maxTime = 600000;//10 minutes max between each sending (milliseconds)
-long timePassed = 0;
-const int sensor = A0;
+//Sensor 1
+const int idSensor1 = 1;
+const int pinSensor1 = A0;
+int lastValueSensor1 = 0;
 
-void sendFrame(int numArduino, int numPin, long value);
+//Sensor 2
+const int idSensor2 = 2;
+const int pinSensor2 = A1;
+int lastValueSensor2 = 0;
+
+long waitingTime = 2000;//Time to wait between each reading
+
+void sendFrame(int numArduino, long value);
+int readSendSensor(const int sensorId, const int pin, int lastValue);
 
 void setup() {                
-  // initialize the digital pin as an output.
-  pinMode(sensor, INPUT); 
+  pinMode(pinSensor1, INPUT); 
+  pinMode(pinSensor2, INPUT);
   Serial.begin(9600);  
 }
 
 void loop() {
-  //Read sensor value
-  sensorValue = analogRead(sensor);
-  sensorValue = map(sensorValue, 0, 1023, 0, 255);
-  timePassed = millis() - lastSending;
-  //May occured when millis() will overflow, after approximately 50 days 
-  timePassed = timePassed >= 0 ? timePassed : -timePassed;
-  
-  if(sensorValue != lastValue || timePassed > maxTime) {
-    sendFrame(sensorId, sensorValue);
-    lastValue = sensorValue;
-    lastSending = millis();
-  }
+  lastValueSensor1 = readSendSensor(idSensor1, pinSensor1, lastValueSensor1);
+  lastValueSensor2 = readSendSensor(idSensor2, pinSensor2, lastValueSensor2);
   delay(waitingTime);
+}
+
+//Read the value and send over serial
+int readSendSensor(const int sensorId, const int pin, int lastValue) {
+  int sensorValue = 0;
+  
+  sensorValue = analogRead(pin);
+  sensorValue = map(sensorValue, 0, 1023, 0, 255);
+  
+  //Check if value has changed
+  if(sensorValue != lastValue) {
+    sendFrame(sensorId, sensorValue);
+  }
+  
+  return sensorValue;
 }
 
 void sendFrame(int numArduino, long value){
