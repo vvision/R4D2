@@ -38,7 +38,7 @@ Default values should be overwritten to fit your settings.
 
 You can retrieve data on /values and the parameter sensor containing the id of the sensor.
 For example, to get all data concerning sensor 1: **curl -XGET localhost:8080/values?sensor=1**
-`
+```javascript
 {
   "allValues": [
     {
@@ -64,10 +64,10 @@ For example, to get all data concerning sensor 1: **curl -XGET localhost:8080/va
     }
   ]
 }
-`
+```
 
 It is possible to get sample values using: **curl -XGET localhost:8080/mock**
-`
+```javascript
 {
   "allValues": [
     {
@@ -83,7 +83,7 @@ It is possible to get sample values using: **curl -XGET localhost:8080/mock**
   ],
   "err": null
 }
-`
+```
 
 ##Data Structure
 
